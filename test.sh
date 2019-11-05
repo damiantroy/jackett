@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -x
 
-curl http://localhost:9117/torznab/all/api |grep 'error code="100"'
+curl http://127.0.0.1:9117/torznab/all/api |grep 'error code="100"'
 RESULT=$?
 
 if [[ ${RESULT} -eq 0 ]]; then
