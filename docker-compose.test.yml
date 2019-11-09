@@ -3,7 +3,7 @@ version: "3.6"
 services:
   sut:
     build: .
-    volues:
+    volumes:
       - jackett_config:/config
     command: test.sh -t 30 -u http://localhost:9117/torznab/all/api -e 'error code="100"'
 
