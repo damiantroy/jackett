@@ -1,3 +1,14 @@
-sut:
-  build: .
-  command: test.sh
+version: "3.6"
+
+services:
+  sut:
+    build: .
+    volues:
+      - jackett_config:/config
+    command: test.sh -t 30 -u http://localhost:9117/torznab/all/api -e 'error code="100"'
+
+volumes:
+  jackett_config:
+    driver_opts:
+      type: tmpfs
+      device: tmpfs
