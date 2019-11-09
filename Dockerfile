@@ -15,7 +15,7 @@ COPY test.sh /usr/local/bin/
 # App
 EXPOSE 9117
 RUN yum -y install epel-release && \
-    yum -y install jq libicu && \
+    yum -y install nmap-ncat jq libicu && \
     yum clean all
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN VERSION=$(curl -s 'https://api.github.com/repos/Jackett/Jackett/releases/latest' |jq -r '.tag_name') && \
