@@ -6,7 +6,7 @@ services:
     volumes:
       - jackett_config:/config
     command: >
-      bash -c "/opt/Jackett/jackett --NoUpdates --DataFolder=/config &&
+      bash -c "/opt/Jackett/jackett --NoUpdates --DataFolder=/config &
                test.sh -t 30 -u http://localhost:9117/torznab/all/api -e 'error code=\"100\"'"
 
 volumes:
