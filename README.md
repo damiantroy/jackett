@@ -19,12 +19,12 @@ PGID=1001
 TZ=Australia/Melbourne
 VIDEOS_DIR=/videos
 JACKETT_CONFIG_DIR=/etc/config/jackett
-JACKETT_IMAGE=localhost/jackett # Or damiantroy/jackett if running from docker.io
+JACKETT_IMAGE=localhost/jackett # Or damiantroy/jackett if deploying from docker.io
 
 sudo mkdir -p ${VIDEOS_DIR} ${JACKETT_CONFIG_DIR}
 sudo chown -R ${PUID}:${PGID} ${VIDEOS_DIR} ${JACKETT_CONFIG_DIR}
 
-# You an skip the build if you're running from docker.io
+# You can skip the 'build' step if deploying from docker.io
 sudo podman build -t jackett .
 
 sudo podman run -d \
