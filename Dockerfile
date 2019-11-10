@@ -13,6 +13,7 @@ ENV TZ=Australia/Melbourne
 COPY test.sh /usr/local/bin/
 
 # App
+VOLUME /videos
 EXPOSE 9117
 RUN yum -y install epel-release && \
     yum -y install nmap-ncat jq libicu && \
