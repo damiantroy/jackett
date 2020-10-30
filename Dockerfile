@@ -18,7 +18,6 @@ EXPOSE 9117
 RUN yum -y install epel-release && \
     yum -y install nmap-ncat jq libicu && \
     yum clean all
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN VERSION=$(curl -s 'https://api.github.com/repos/Jackett/Jackett/releases/latest' |jq -r '.tag_name') && \
     curl -sLo /tmp/Jackett.Binaries.LinuxAMDx64.tar.gz "https://github.com/Jackett/Jackett/releases/download/${VERSION}/Jackett.Binaries.LinuxAMDx64.tar.gz" && \
     tar xzf /tmp/Jackett.Binaries.LinuxAMDx64.tar.gz -C /opt/ && \
@@ -28,4 +27,3 @@ RUN VERSION=$(curl -s 'https://api.github.com/repos/Jackett/Jackett/releases/lat
 # Runtime
 USER videos
 CMD ["/opt/Jackett/jackett","--NoUpdates","--DataFolder=/config"]
-
