@@ -32,18 +32,19 @@ PGID=1001
 TZ=Australia/Melbourne
 VIDEOS_DIR=/videos
 JACKETT_CONFIG_DIR=/etc/config/jackett
-JACKETT_IMAGE=localhost/jackett # Or damiantroy/jackett if deploying from docker.io
+JACKETT_IMAGE=jackett # Or docker.io/damiantroy/jackett
 
 sudo mkdir -p ${VIDEOS_DIR} ${JACKETT_CONFIG_DIR}
 sudo chown -R ${PUID}:${PGID} ${VIDEOS_DIR} ${JACKETT_CONFIG_DIR}
 
-sudo podman run -d \
+# Select 'podman' or 'docker'
+podman run -d \
     --name=jackett \
     --network host \
-    -e PUID=${PUID} \
-    -e PGID=${PGID} \
-    -e TZ=${TZ} \
-    -v ${JACKETT_CONFIG_DIR}:/config:Z \
-    -v ${VIDEOS_DIR}:/videos:z \
-    ${JACKETT_IMAGE}
+    -e PUID="$PUID" \
+    -e PGID="$PGID" \
+    -e TZ="$TZ" \
+    -v "${JACKETT_CONFIG_DIR}:/config:Z" \
+    -v "$VIDEOS_DIR:/videos:z" \
+    "$JACKETT_IMAGE"
 ```
