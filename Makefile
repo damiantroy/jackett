@@ -19,8 +19,7 @@ build-nc: ## Build the container without cache.
 
 .PHONY: test
 test: ## Test the container.
-	$(CONTAINER_RUNTIME) run -it --rm \
-		"${APP_NAME}" \
+	$(CONTAINER_RUNTIME) run -it --rm "${APP_NAME}" \
 		bash -c "/opt/Jackett/jackett --NoUpdates --DataFolder=/config & \
 			   test.sh -t 30 -u http://localhost:9117/torznab/all/api -e 'error code=\"100\"'"
 
