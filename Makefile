@@ -1,4 +1,4 @@
-APP_NAME ?= jackett
+APP_NAME ?= damiantroy/jackett
 CONTAINER_RUNTIME := $(shell command -v podman 2> /dev/null || echo docker)
 
 .PHONY: help
@@ -22,6 +22,10 @@ test: ## Test the container.
 	$(CONTAINER_RUNTIME) run -it --rm "${APP_NAME}" \
 		bash -c "/opt/Jackett/jackett --NoUpdates --DataFolder=/config & \
 			   test.sh -t 30 -u http://localhost:9117/torznab/all/api -e 'error code=\"100\"'"
+
+.PHONY: push
+push: ## Publish the container on Docker Hub
+	$(CONTAINER_RUNTIME) push "${APP_NAME}"
 
 .PHONY: shell
 shell: ## Launce a shell in the container.
