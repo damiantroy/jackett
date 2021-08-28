@@ -1,15 +1,16 @@
 # Base
-FROM centos:7
+FROM docker.io/rockylinux/rockylinux:8
 LABEL maintainer="Damian Troy <github@black.hole.com.au>"
-RUN yum -y update && yum clean all
+RUN dnf -y update && dnf clean all
 
 # Common
 ENV PUID=1001
 ENV PGID=1001
 RUN groupadd -g "${PGID}" videos && \
-    useradd --no-log-init -u ${PUID} -g videos -d /config -M videos && \
+    useradd --no-log-init -u "${PUID}" -g videos -d /config -M videos && \
     install -d -m 0755 -o videos -g videos /config /videos
 ENV TZ=Australia/Melbourne
+ENV LANG=C.UTF-8
 COPY test.sh /usr/local/bin/
 
 # App
