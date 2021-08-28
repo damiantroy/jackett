@@ -1,6 +1,6 @@
 # Jackett torrent search engine aggregator
 
-This is a CentOS 7 container for [Jackett](https://github.com/Jackett/Jackett), which gives API Support for your favorite torrent trackers.
+This is a Rocky Linux 8 container for [Jackett](https://github.com/Jackett/Jackett), which gives API Support for your favorite torrent trackers.
 
 ## Building
 
