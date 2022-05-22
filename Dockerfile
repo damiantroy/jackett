@@ -6,6 +6,7 @@ RUN dnf -y update && dnf clean all
 # Common
 ENV PUID=1001
 ENV PGID=1001
+ENV TMPDIR=/var/tmp
 RUN groupadd -g "${PGID}" videos && \
     useradd --no-log-init -u "${PUID}" -g videos -d /config -M videos && \
     install -d -m 0755 -o videos -g videos /config /videos
