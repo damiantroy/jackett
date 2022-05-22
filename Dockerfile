@@ -15,7 +15,7 @@ COPY test.sh /usr/local/bin/
 
 # App
 RUN yum -y install epel-release && \
-    yum -y install nmap-ncat jq libicu && \
+    yum -y install nmap-ncat gzip jq libicu && \
     yum clean all
 RUN VERSION=$(curl -s 'https://api.github.com/repos/Jackett/Jackett/releases/latest' |jq -r '.tag_name') && \
     curl -sLo /tmp/Jackett.Binaries.LinuxAMDx64.tar.gz "https://github.com/Jackett/Jackett/releases/download/${VERSION}/Jackett.Binaries.LinuxAMDx64.tar.gz" && \
